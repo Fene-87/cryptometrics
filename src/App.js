@@ -6,10 +6,10 @@ import DetailsPage from './pages/detailsPage/DetailsPage';
 function App() {
   return (
     <BrowserRouter>
-      <Route>
+      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/details" element={<DetailsPage />} />
-      </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
