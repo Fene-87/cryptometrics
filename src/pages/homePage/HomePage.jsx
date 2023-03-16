@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetails } from '../../redux/features/detailsSlice';
+import { fetchCurrencyDetails } from '../../redux/features/specificCurrencySlice';
+import CurrencyHome from '../../components/currencyCard/CurrencyCard';
+import './HomePage.css';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -14,9 +18,15 @@ const HomePage = () => {
 
   return (
     <div>
-      {currencyList.map((currency) => (
-        <div key={currency.id}>{currency.id}</div>
-      ))}
+      <div className="details-container">
+        {currencyList.map((currency) => (
+          <NavLink to={`/${currency.id}`}>
+            <div>
+              <CurrencyHome key={currency.id} {...currency} />
+            </div>
+          </NavLink>
+        ))}
+      </div>
     </div>
   );
 };
