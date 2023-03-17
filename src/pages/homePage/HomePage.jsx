@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDetails } from '../../redux/features/detailsSlice';
-import { fetchCurrencyDetails } from '../../redux/features/specificCurrencySlice';
 import CurrencyHome from '../../components/currencyCard/CurrencyCard';
 import './HomePage.css';
 
@@ -18,12 +17,10 @@ const HomePage = () => {
 
   return (
     <div>
-      <div className="details-container">
+      <div className="details-home-container">
         {currencyList.map((currency) => (
-          <NavLink to={`/${currency.id}`}>
-            <div>
-              <CurrencyHome key={currency.id} {...currency} />
-            </div>
+          <NavLink key={currency.id} to={`/${currency.id}`} className="nav-link">
+            <CurrencyHome {...currency} />
           </NavLink>
         ))}
       </div>

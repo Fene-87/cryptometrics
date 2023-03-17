@@ -1,4 +1,10 @@
-.details-container {
+.details-home-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 375px;
+  padding-bottom: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
 }

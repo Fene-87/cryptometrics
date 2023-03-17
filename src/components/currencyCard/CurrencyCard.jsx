@@ -1,19 +1,20 @@
 import React from 'react';
+import './CurrencyCard.css';
 
 const CurrencyCard = ({
-  id,
   name,
   image,
   current_price,
-  last_updated,
 }) => {
   return (
-    <section>
+    <section className="card">
       <div>
-        <img src={image} alt="image" />
+        <img src={image} alt={name} className="card-image" />
       </div>
-      <h2>{name}</h2>
-      <p>{current_price}</p>
+      <h2 className="currency-name">{name}</h2>
+      <p className="price">
+        Current Price: <span className="price-figures">${current_price}</span>
+      </p>
     </section>
   );
 };

@@ -1,0 +1,35 @@
+.navbar {
+  display: flex;
+  padding: 20px;
+  background-color: #ce4277;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  color: #fff;
+  cursor: pointer;
+}
+
+.date {
+  color: #fff;
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.currency {
+  color: #fff;
+  font-family: 'Roboto Slab', sans-serif;
+  text-transform: capitalize;
+}
+
+.right-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}

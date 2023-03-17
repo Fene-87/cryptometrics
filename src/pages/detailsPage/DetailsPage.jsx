@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchCurrencyDetails, resetState } from '../../redux/features/specificCurrencySlice';
+import Navbar from '../../components/navbar/Navbar';
+import './DetailsPage.css';
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -16,20 +18,23 @@ const DetailsPage = () => {
     };
   }, [dispatch, id]);
 
-  if (status === 'loading') return <div>loading</div>;
+  if (status === 'loading') return <div className="loading">loading</div>;
 
   return (
-    <div>
-      <h1>{currencyDetails.id}</h1>
-      <img src={detail.image?.large} alt={currencyDetails.id} />
-      <p />
-      <h3>{currencyDetails.hashing_algorithm}</h3>
-      <h3>{currencyDetails.market_cap_rank}</h3>
-      <h4>{detail.image?.small}</h4>
+    <div className="details-page">
+      <Navbar />
+      <div className="details-container">
+        <h1 className="details-id">{currencyDetails.id}</h1>
+        <img src={detail.image?.large} alt={currencyDetails.id} className="details-image" />
+        <div className="details-info">
+          <p className="market-cap-rank">Market Cap Rank: <span>{currencyDetails.market_cap_rank}</span></p>
+          <p className="current-price">Current Price: <span>${currencyDetails.market_data?.current_price.usd}</span></p>
+          <p className="market-cap">Market Cap: <span>{currencyDetails.market_data?.market_cap.usd}</span></p>
+          <p className="last-updated">Last Updated: <span>{currencyDetails.market_data?.last_updated}</span></p>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default DetailsPage;
-
-// dispatch(fetchCurrencyDetails(currency.id));

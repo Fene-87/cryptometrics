@@ -20,6 +20,11 @@
       "import/no-unresolved": "off",
       "no-param-reassign": "off",
       "arrow-body-style": "off",
+      "react/prop-types": "off",
+      "camelcase": "off",
+      "react/jsx-props-no-spreading": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "import/no-extraneous-dependencies": "off",
       "no-shadow": "off"
     },
     "ignorePatterns": [
