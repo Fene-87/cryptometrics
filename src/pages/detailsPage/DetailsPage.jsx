@@ -8,6 +8,7 @@ import './DetailsPage.css';
 const DetailsPage = () => {
   const { id } = useParams();
   const { currencyDetails, status } = useSelector((store) => store.specificCurrency);
+  const { currency } = useSelector((store) => store.details);
   const dispatch = useDispatch();
   const detail = currencyDetails;
 
@@ -28,7 +29,7 @@ const DetailsPage = () => {
         <img src={detail.image?.large} alt={currencyDetails.id} className="details-image" />
         <div className="details-info">
           <p className="market-cap-rank">Market Cap Rank: <span>{currencyDetails.market_cap_rank}</span></p>
-          <p className="current-price">Current Price: <span>${currencyDetails.market_data?.current_price.usd}</span></p>
+          <p className="current-price">Current Price: <span>{currency === 'usd' ? '$' : currency}{currencyDetails.market_data?.current_price[currency]}</span></p>
           <p className="market-cap">Market Cap: <span>{currencyDetails.market_data?.market_cap.usd}</span></p>
           <p className="last-updated">Last Updated: <span>{currencyDetails.market_data?.last_updated}</span></p>
         </div>
