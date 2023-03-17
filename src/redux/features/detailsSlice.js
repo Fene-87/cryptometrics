@@ -38,11 +38,9 @@ const detailsSlice = createSlice({
     },
     updateMin: (state, { payload }) => {
       state.min = payload;
-      console.log(state.min);
     },
     updateMax: (state, { payload }) => {
       state.max = payload;
-      console.log(state.max);
     },
     resetState: (state) => ({
       ...state,
