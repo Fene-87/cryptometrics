@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Currency Card Component component match with the snapshot 1`] = `
+<section
+  className="card"
+>
+  <div>
+    <img
+      className="card-image"
+    />
+  </div>
+  <h2
+    className="currency-name"
+  />
+  <p
+    className="price"
+  >
+    Current Price: 
+    <span
+      className="price-figures"
+    >
+      $
+    </span>
+  </p>
+</section>
+`;
+
+exports[`Currency component component match with the snapshot 1`] = `
+  <section
+    className="card"
+  >
+    <div>
+        <img src={image} alt={name} className="card-image" />
+    </div>
+    <h2
+      className="currency-name"
+    >
+    </h2>
+    <p
+      className="price"
+    >
+      Current Price: 
+      <span
+       className="price-figures"
+      >
+        $
+      </span>
+    </p>
+  </section>
+`;
