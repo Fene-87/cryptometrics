@@ -1,30 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDetails, showModal, updateCurrency } from '../../redux/features/detailsSlice';
+import {
+  fetchDetails, showModal, filter, updateMax, updateMin,
+} from '../../redux/features/detailsSlice';
 import CurrencyHome from '../../components/currencyCard/CurrencyCard';
 import Navbar from '../../components/navbar/Navbar';
 import './HomePage.css';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const { currencyList, status, modal } = useSelector((store) => store.details);
-  const [type, setType] = useState('usd');
+  const { status, modal, filteredList } = useSelector((store) => store.details);
 
   const handleModal = () => {
     dispatch(showModal());
   };
 
-  const handleType = (name) => {
-    setType(name);
-    dispatch(updateCurrency(name));
+  const handleFilter = (first, last) => {
+    dispatch(updateMin(first));
+    dispatch(updateMax(last));
+    dispatch(filter());
   };
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchDetails(type));
+      dispatch(fetchDetails());
     }
-  }, [status, dispatch, type]);
+  }, [status, dispatch]);
 
   if (status === 'loading') return <div>loading...</div>;
 
@@ -34,44 +36,44 @@ const HomePage = () => {
       {modal && (
         <div className="modal">
           <p onClick={() => {
-            handleType('usd');
             handleModal();
+            handleFilter(0, 10);
           }}
           >
-            Usd
+            $0-$10
           </p>
           <p onClick={() => {
-            handleType('eur');
             handleModal();
+            handleFilter(11, 100);
           }}
           >
-            Euro
+            $11-$100
           </p>
           <p onClick={() => {
-            handleType('gbp');
             handleModal();
+            handleFilter(101, 1000);
           }}
           >
-            Pound
+            $101-$1000
           </p>
           <p onClick={() => {
-            handleType('jpy');
             handleModal();
+            handleFilter(1001, 10000);
           }}
           >
-            Japanese Yen
+            $1001-$10000
           </p>
           <p onClick={() => {
-            handleType('cad');
             handleModal();
+            handleFilter(10001, 100000000);
           }}
           >
-            Canadian Dollar
+            Greater than $10000
           </p>
         </div>
       )}
       <div className="details-home-container">
-        {currencyList.map((currency) => (
+        {filteredList.map((currency) => (
           <NavLink key={currency.id} to={`/${currency.id}`} className="nav-link">
             <CurrencyHome {...currency} />
           </NavLink>

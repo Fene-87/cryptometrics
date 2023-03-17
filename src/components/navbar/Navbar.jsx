@@ -2,16 +2,23 @@ import React from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { faChevronLeft, faMicrophone, faGear } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useDispatch } from 'react-redux';
-import { showModal } from '../../redux/features/detailsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { showModal, fetchDetails } from '../../redux/features/detailsSlice';
 import './Navbar.css';
 
 const Navbar = ({ type }) => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { status } = useSelector((store) => store.details);
 
   const handleModal = () => {
     dispatch(showModal());
+  };
+
+  const handleReset = () => {
+    if (status === 'idle') {
+      dispatch(fetchDetails());
+    }
   };
 
   return (
@@ -25,7 +32,14 @@ const Navbar = ({ type }) => {
       <h2 className="currency">{type === 'home' ? 'CryptoMetrics' : id}</h2>
       <div className="right-header">
         <FontAwesomeIcon icon={faMicrophone} className="icon" />
-        <FontAwesomeIcon icon={faGear} className="icon" onClick={handleModal} />
+        <FontAwesomeIcon
+          icon={faGear}
+          className="icon"
+          onClick={() => {
+            handleModal();
+            handleReset();
+          }}
+        />
       </div>
     </div>
   );

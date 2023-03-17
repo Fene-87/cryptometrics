@@ -1,5 +1,4 @@
 .home-page {
-  max-width: 385px;
   display: flex;
   flex-direction: column;
 }
@@ -7,7 +6,6 @@
 .details-home-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 375px;
   padding-bottom: 2rem;
 }
 
