@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, NavLink } from 'react-router-dom';
-import { faChevronLeft, faMicrophone, faGear } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faMicrophone, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { showModal, fetchDetails } from '../../redux/features/detailsSlice';
@@ -32,14 +32,16 @@ const Navbar = ({ type }) => {
       <h2 className="currency">{type === 'home' ? 'CryptoMetrics' : id}</h2>
       <div className="right-header">
         <FontAwesomeIcon icon={faMicrophone} className="icon" />
-        <FontAwesomeIcon
-          icon={faGear}
+        <p
           className="icon"
           onClick={() => {
             handleModal();
             handleReset();
           }}
-        />
+        >
+          filter
+          <FontAwesomeIcon icon={faChevronDown} className="icon" />
+        </p>
       </div>
     </div>
   );
