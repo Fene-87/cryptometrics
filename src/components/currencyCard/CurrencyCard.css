@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  background-color: #fb5193;
+  width: 100%;
+  border: 1px solid #d3d3d3;
+  height: 150px;
+  padding: 10px 5px;
+}
+
+.card-image {
+  width: 70px;
+  height: 70px;
+}
+
+.currency-name {
+  color: #fff;
+  font-family: 'lato', sans-serif;
+}
+
+.price {
+  color: #fff;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.price-figures {
+  color: #febb02;
+  background-color: #ce4277;
+  margin-left: 5px;
+  padding: 5px 2px;
+  border-radius: 5px;
+}

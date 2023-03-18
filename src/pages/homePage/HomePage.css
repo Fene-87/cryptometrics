@@ -1,0 +1,41 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.details-home-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.modal {
+  position: fixed;
+  margin-top: 8rem;
+  width: 300px;
+  height: 60vh;
+  border: 3px solid #d3d3d3;
+  border-radius: 8px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ce4277;
+  padding: 20px;
+}
+
+.modal > p {
+  margin-top: 10px;
+  color: #fff;
+  font-family: 'lato', sans-serif;
+  cursor: pointer;
+  border-bottom: 1px solid #febb02;
+  width: 150px;
+  text-align: center;
+  padding: 20px 0;
+}
